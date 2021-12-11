@@ -1,5 +1,20 @@
 <?php
 include "../store.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (isset($_POST["delete"]) && $state->is_logged_in()) {
+    $state->delete_article($_POST["article_id"]);
+  } elseif (isset($_POST["save"])) {
+    $args = "";
+    foreach ($_POST as $key => $value) {
+      if ($key != "save")
+        $args = $args . $key . "=" . $value;
+    }
+    header("location:product_page.php?" . $args);
+    die();
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -35,11 +50,18 @@ include "../store.php";
         <?php
         foreach ($state->get_articles() as $article) {
         ?>
-          <form action="./product_page.php" class="col-3 my-4">
+          <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])  ?>" class="col-3 my-4">
             <div class="card" style="width: 18rem;">
               <div class="custom-thumbnail">
                 <img src="<?php echo $article->get_image() ?>" class="card-img-top bg-light" alt="thumbnail">
               </div>
+              <?php
+              if ($state->is_logged_in()) {
+              ?>
+                <button type="submit" name="delete" class="btn-close" aria-label="Close"></button>
+              <?php
+              }
+              ?>
               <div class="card-body">
                 <?php
                 for ($i = 0; $i < 5; $i++) {
@@ -61,7 +83,7 @@ include "../store.php";
                 <h5 class="card-title mt-2"><?php echo $article->get_title() ?></h5>
                 <p class="card-text"><?php echo $article->get_content() ?></p>
                 <input type="hidden" name="article_id" value="<?php echo $article->get_id() ?>" />
-                <button class="btn btn-primary" type="submit">Bewerten Sie jetzt!</button>
+                <button class="btn btn-primary" type="submit" name="save">Bewerten Sie jetzt!</button>
               </div>
             </div>
           </form>

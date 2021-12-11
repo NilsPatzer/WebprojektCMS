@@ -357,6 +357,21 @@ class StateInstance
         }));
     }
 
+    public function delete_article($id){
+        global $pdo;
+        try{
+            $sql = "DELETE FROM articles WHERE id=:id";
+
+            $pdo->prepare($sql)->execute([
+                "id" => $id
+            ]);
+
+            $this->fetch_comments();
+        } catch (PDOException $e) {
+            echo "Datenbankfehler: " . $e->getMessage();
+        }
+    }
+
     public function add_comment(string $title, string $content, int $rating, int $article_id)
     {
         global $pdo;
