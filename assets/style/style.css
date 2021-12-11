@@ -1,0 +1,297 @@
+
+
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+}
+button {
+	font-family: "Poppins", sans-serif;
+}
+/* header styling */
+header {
+	align-items: center;
+	display: flex;
+	height: 10vh;
+	margin: auto;
+	width: 90%;
+}
+
+.logo-container,
+.nav-links,
+.cart {
+	display: flex;
+}
+
+.logo-container {
+	flex: 1;
+}
+.logo {
+	font-weight: 400;
+	margin: 5px;
+}
+nav {
+	flex: 2;
+}
+nav a:hover {
+	color: #29a8e2;
+}
+.nav-links {
+	justify-content: space-around;
+	list-style: none;
+}
+.nav-link {
+	color: #5f5f79;
+	font-size: 18px;
+	text-decoration: none;
+}
+.cart {
+	flex: 1;
+	justify-content: flex-end;
+}
+
+.presentation {
+	align-items: center;
+	display: flex;
+	margin: auto;
+	min-height: 80vh;
+	width: 90%;
+}
+.introduction {
+	flex: 1;
+}
+.intro-text h1 {
+	background: linear-gradient(to right, #494964, #6f6f89);
+	font-size: 44px;
+	font-weight: 500;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.intro-text p {
+	color: #585772;
+	font-size: 22px;
+	margin-top: 5px;
+}
+/*  info banner styling */
+.cta {
+	padding: 50px 0px 0px 0px;
+}
+.cta-select {
+	border: 2px solid #29a8e2;
+	background: transparent;
+	color: #29a8e2;
+	cursor: pointer;
+	font-size: 16px;
+	height: 50px;
+	width: 150px;
+}
+.cta-add {
+	background: #29a8e2;
+	border: none;
+	color: white;
+	cursor: pointer;
+	font-size: 16px;
+	height: 50px;
+	margin: 30px 0px 0px 30px;
+	width: 150px;
+}
+
+.cover {
+	display: flex;
+	flex: 1;
+	height: 60vh;
+	justify-content: center;
+}
+.cover img {
+	filter: drop-shadow(0px 5px 3px black);
+	animation: drop 1.5s ease;
+	height: 100%;
+}
+
+@keyframes drop {
+	0% {
+		opacity: 0;
+		transform: translateY(-80px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+/* responsive */
+@media screen and (max-width: 1024px) {
+	.presentation {
+		flex-direction: column;
+	}
+	.introduction {
+		margin-top: 5vh;
+		text-align: center;
+	}
+	.intro-text h1 {
+		font-size: 30px;
+	}
+	.intro-text p {
+		font-size: 18px;
+	}
+	.cta {
+		padding: 10px 0px 0px 0px;
+	}
+
+	.cover img {
+		height: 80%;
+	}
+}
+/* slider styling */
+.slider {
+	border: 10px #29a8e2;
+	max-width: 700px;
+	margin: 80px auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.slider .left-slide,
+.slider .right-slide {
+	background-color: #444444;
+	border-radius: 50%;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 20px;
+	height: 40px;
+	line-height: 40px;
+	margin-top: -20px;
+	position: absolute;
+	top: 50%;
+	text-align: center;
+	width: 40px;
+}
+.slider .left-slide:hover,
+.slider .right-slide:hover {
+	box-shadow: 0px 0px 10px black;
+	background-color: #29a8e2;
+}
+
+.slider .left-slide {
+	left: 30px;
+}
+.slider .right-slide {
+	right: 30px;
+}
+.slider .slider-items .item img {
+	animation: zoom 1s ease;
+	display: block;
+	max-width: 100%;
+}
+/* zoom animation für Slider */
+@keyframes zoom {
+	0% {
+		transform: scale(2);
+		opacity: 0;
+	}
+	50% {
+		transform: scale(2);
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+.slider .slider-items .item {
+	display: none;
+	position: relative;
+}
+.slider .slider-items .item .caption {
+	background-color: rgba(0, 0, 0, 0.5);
+	bottom: 0px;
+	color: #ffffff;
+	font-size: 30px;
+	height: 60px;
+	left: 0px;
+	line-height: 60px;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+.slider .slider-items .item.active {
+	display: block;
+}
+.p-tags-gallery {
+	font-size: 18px;
+	text-align: center;
+}
+/* Beginn Bildergalerie */
+.first-gallery {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	width: auto;
+}
+
+.gallery-hightlight {
+	height: 50%;
+	width: 70%;
+}
+
+.gallery-preview {
+	border: 2px solid #29a8e2;
+	display: flex;
+	width: auto;
+}
+.gallery-preview img {
+	cursor: pointer;
+	flex-grow: 1;
+	height: 100px;
+	opacity: 0.5;
+	transition: opacity 0.4s ease;
+}
+
+img.gallery-active {
+	opacity: 1;
+}
+.p-tags-gallery {
+	display: block;
+	margin-bottom: 20px;
+	text-align: center;
+}
+/* Formularvalidierung */
+.form {
+	padding: 40px;
+	text-align: center;
+}
+.form-group label {
+	display: block;
+	font-size: 21px;
+	margin-bottom: 10px;
+}
+.form-group input {
+	color: #29a8e2;
+	font-size: 18px;
+	margin-bottom: 5px;
+	padding: 10px;
+	width: 250px;
+}
+.formular {
+	display: block;
+	font-size: 20px;
+	margin-top: 20px;
+	text-align: center;
+}
+button {
+	border: 5px;
+	border-radius: 10px;
+	color: grey;
+	cursor: pointer;
+	font-size: 20px;
+	margin-top: 20px;
+	padding: 10px;
+}
+button:hover {
+	background-color: #29a8e2;
+	border: black;
+}
